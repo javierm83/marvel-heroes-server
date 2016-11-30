@@ -1,0 +1,16 @@
+# https://medium.com/@sunnykay/docker-development-workflow-node-express-mongo-4bb3b1f7eb1e#.w44u533v1
+# docker-compose -f local.yml up -d
+version: "2"
+services:
+  web:
+    build: .
+    container_name: marvel-heroes-server
+    volumes:
+      - ./:/app
+    environment:
+      - ALLOW_OVERRIDE=true
+      - VIRTUAL_HOST=marvelheroes.api
+      - VIRTUAL_PORT=3000
+    network_mode: bridge
+    ports:
+      - "8020:3000"
